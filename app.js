@@ -10,8 +10,11 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 //Set up mongoose connection
+// Set up mongoose connection
+var dev_db_url = 'mongodb+srv://rima123:ZRhLOdb5Em8bFfzT@cluster0-2hcvw.azure.mongodb.net/local_library?retryWrites=true'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://rima123:ZRhLOdb5Em8bFfzT@cluster0-2hcvw.azure.mongodb.net/local_library?retryWrites=true';
+//var mongoDB = 'mongodb+srv://rima123:ZRhLOdb5Em8bFfzT@cluster0-2hcvw.azure.mongodb.net/local_library?retryWrites=true';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
